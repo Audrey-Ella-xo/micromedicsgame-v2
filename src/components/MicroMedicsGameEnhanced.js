@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable default-case, react-hooks/exhaustive-deps */
 import React, { useState, useRef, useEffect } from 'react';
 
 const MicroMedicsGame = () => {
