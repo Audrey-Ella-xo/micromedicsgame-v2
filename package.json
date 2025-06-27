@@ -1,12 +1,19 @@
 {
-  "name": "micro-medics-v2-enhanced",
+  "name": "micro-medics-enhanced-v2",
   "version": "2.0.0",
   "private": true,
-  "description": "Enhanced Micro Medics - Advanced Brain Surgery Simulation with Patient Stories, Achievements & Daily Challenges",
+  "description": "Enhanced brain surgery simulation with patient stories, achievements, ship customization, and daily challenges",
+  "author": "Micro Medics Development Team",
+  "license": "MIT",
+  "homepage": "./",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,5 +46,17 @@
     "tailwindcss": "^3.3.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.24"
-  }
+  },
+  "keywords": [
+    "medical",
+    "education",
+    "game",
+    "neuroscience",
+    "brain",
+    "surgery",
+    "nano",
+    "simulation",
+    "react",
+    "enhanced"
+  ]
 }

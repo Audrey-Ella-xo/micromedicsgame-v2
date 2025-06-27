@@ -4,16 +4,142 @@
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#06b6d4" />
     <meta
       name="description"
-      content="Micro Medics Enhanced v2.0 - Advanced brain surgery simulation with patient stories, achievements, ship customization, and daily challenges!"
+      content="Micro Medics Enhanced v2.0 - Advanced brain surgery simulation with patient stories, achievements, ship customization, and daily challenges! Learn real neuroscience while saving virtual lives."
     />
-    <title>Micro Medics Enhanced v2.0</title>
+    <meta name="keywords" content="medical education, brain surgery, neuroscience, game, simulation, nano surgery, medical learning" />
+    <meta name="author" content="Micro Medics Development Team" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Micro Medics Enhanced v2.0" />
+    <meta property="og:description" content="Advanced brain surgery simulation with patient stories and achievements" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%PUBLIC_URL%/logo192.png" />
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Micro Medics Enhanced v2.0" />
+    <meta name="twitter:description" content="Learn neuroscience through engaging brain surgery simulation" />
+    
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Preload critical fonts and styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'medical-blue': '#06b6d4',
+              'medical-purple': '#8b5cf6',
+              'medical-green': '#10b981'
+            },
+            animation: {
+              'float': 'float 3s ease-in-out infinite',
+              'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+              'shimmer': 'shimmer 2s ease-in-out infinite'
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- Enhanced CSS Animations -->
+    <style>
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+      }
+      
+      @keyframes pulse-glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.5); }
+        50% { box-shadow: 0 0 30px rgba(6, 182, 212, 0.8); }
+      }
+      
+      @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+      
+      /* Ensure proper scrolling */
+      html, body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+      }
+      
+      /* Loading animation */
+      .loading-spinner {
+        border: 4px solid rgba(6, 182, 212, 0.3);
+        border-top: 4px solid #06b6d4;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+    
+    <title>Micro Medics Enhanced v2.0 - Medical Education Game</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="padding: 20px; text-align: center; background: #ef4444; color: white;">
+        You need to enable JavaScript to run Micro Medics Enhanced v2.0.
+        <br><br>
+        This medical education game requires JavaScript for interactive features,
+        patient case management, and achievement tracking.
+      </div>
+    </noscript>
+    
+    <!-- Loading Screen -->
+    <div id="loading" style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #312e81 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      color: white;
+    ">
+      <div style="font-size: 4rem; margin-bottom: 2rem;">🧠</div>
+      <h1 style="font-size: 2rem; font-weight: bold; margin-bottom: 1rem; color: #06b6d4;">
+        Micro Medics Enhanced v2.0
+      </h1>
+      <div class="loading-spinner" style="margin-bottom: 1rem;"></div>
+      <p style="color: #d1d5db;">Loading enhanced medical experience...</p>
+    </div>
+    
     <div id="root"></div>
+    
+    <!-- Hide loading screen when React loads -->
+    <script>
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loading = document.getElementById('loading');
+          if (loading) {
+            loading.style.opacity = '0';
+            loading.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => loading.remove(), 500);
+          }
+        }, 1000);
+      });
+    </script>
   </body>
 </html>

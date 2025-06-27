@@ -1,17 +1,13 @@
 // Comprehensive achievement system for enhanced gameplay motivation
 export const achievements = {
-  // Beginner Achievements
+  // Beginner Achievements - Learning Category
   first_repair: {
     id: 'first_repair',
     name: 'First Steps',
     description: 'Complete your first neural repair',
     icon: '🌱',
     rarity: 'common',
-    reward: {
-      coins: 25,
-      researchPoints: 10,
-      xp: 50
-    },
+    reward: 25,
     category: 'learning',
     unlockCondition: {
       type: 'repair_count',
@@ -27,11 +23,7 @@ export const achievements = {
     description: 'Complete tutorial without taking any damage',
     icon: '🕊️',
     rarity: 'common',
-    reward: {
-      coins: 30,
-      researchPoints: 15,
-      xp: 75
-    },
+    reward: 30,
     category: 'learning',
     unlockCondition: {
       type: 'tutorial_no_damage',
@@ -47,11 +39,7 @@ export const achievements = {
     description: 'Complete tutorial in under 5 minutes',
     icon: '🚀',
     rarity: 'uncommon',
-    reward: {
-      coins: 40,
-      researchPoints: 20,
-      xp: 100
-    },
+    reward: 40,
     category: 'learning',
     unlockCondition: {
       type: 'tutorial_time',
@@ -68,11 +56,7 @@ export const achievements = {
     description: 'Achieve a 3x repair combo',
     icon: '🔥',
     rarity: 'common',
-    reward: {
-      coins: 35,
-      researchPoints: 15,
-      xp: 80
-    },
+    reward: 35,
     category: 'skill',
     unlockCondition: {
       type: 'combo_count',
@@ -88,11 +72,7 @@ export const achievements = {
     description: 'Achieve a 5x repair combo',
     icon: '🔥',
     rarity: 'uncommon',
-    reward: {
-      coins: 50,
-      researchPoints: 25,
-      xp: 125
-    },
+    reward: 50,
     category: 'skill',
     unlockCondition: {
       type: 'combo_count',
@@ -108,11 +88,7 @@ export const achievements = {
     description: 'Achieve a 10x repair combo',
     icon: '⚡',
     rarity: 'epic',
-    reward: {
-      coins: 100,
-      researchPoints: 50,
-      xp: 250
-    },
+    reward: 100,
     category: 'skill',
     unlockCondition: {
       type: 'combo_count',
@@ -128,11 +104,7 @@ export const achievements = {
     description: 'Use optimal tools for 10 consecutive repairs',
     icon: '🎯',
     rarity: 'uncommon',
-    reward: {
-      coins: 60,
-      researchPoints: 30,
-      xp: 150
-    },
+    reward: 60,
     category: 'skill',
     unlockCondition: {
       type: 'optimal_tool_streak',
@@ -148,11 +120,7 @@ export const achievements = {
     description: 'Complete a stage in under 60 seconds',
     icon: '⚡',
     rarity: 'rare',
-    reward: {
-      coins: 75,
-      researchPoints: 35,
-      xp: 175
-    },
+    reward: 75,
     category: 'skill',
     unlockCondition: {
       type: 'stage_time',
@@ -162,6 +130,22 @@ export const achievements = {
     celebrationMessage: "Lightning fast! Emergency surgery skills unlocked!"
   },
 
+  surgical_artist: {
+    id: 'surgical_artist',
+    name: 'Surgical Artist',
+    description: 'Complete a stage with 100% efficiency rating',
+    icon: '🎨',
+    rarity: 'rare',
+    reward: 80,
+    category: 'skill',
+    unlockCondition: {
+      type: 'perfect_efficiency',
+      value: 100
+    },
+    hidden: false,
+    celebrationMessage: "Artistic mastery! Your technique is a work of art!"
+  },
+
   // Discovery Achievements
   virus_spotter: {
     id: 'virus_spotter',
@@ -169,11 +153,7 @@ export const achievements = {
     description: 'Discover your first virus type',
     icon: '🔬',
     rarity: 'common',
-    reward: {
-      coins: 30,
-      researchPoints: 20,
-      xp: 75
-    },
+    reward: 30,
     category: 'discovery',
     unlockCondition: {
       type: 'virus_types_discovered',
@@ -189,11 +169,7 @@ export const achievements = {
     description: 'Discover 5 different virus types',
     icon: '🦠',
     rarity: 'uncommon',
-    reward: {
-      coins: 75,
-      researchPoints: 40,
-      xp: 150
-    },
+    reward: 75,
     category: 'discovery',
     unlockCondition: {
       type: 'virus_types_discovered',
@@ -209,11 +185,7 @@ export const achievements = {
     description: 'Discover all virus types',
     icon: '📚',
     rarity: 'legendary',
-    reward: {
-      coins: 200,
-      researchPoints: 100,
-      xp: 500
-    },
+    reward: 200,
     category: 'discovery',
     unlockCondition: {
       type: 'virus_types_discovered',
@@ -223,6 +195,22 @@ export const achievements = {
     celebrationMessage: "LEGENDARY RESEARCH! You've cataloged every known pathogen!"
   },
 
+  medical_scholar: {
+    id: 'medical_scholar',
+    name: 'Medical Scholar',
+    description: 'Learn 25 medical facts',
+    icon: '📖',
+    rarity: 'uncommon',
+    reward: 65,
+    category: 'discovery',
+    unlockCondition: {
+      type: 'facts_learned',
+      value: 25
+    },
+    hidden: false,
+    celebrationMessage: "Knowledge is power! You're becoming a medical expert!"
+  },
+
   // Health & Safety Achievements
   perfectionist: {
     id: 'perfectionist',
@@ -230,11 +218,7 @@ export const achievements = {
     description: 'Complete a stage with 100% health',
     icon: '💯',
     rarity: 'uncommon',
-    reward: {
-      coins: 60,
-      researchPoints: 30,
-      xp: 125
-    },
+    reward: 60,
     category: 'safety',
     unlockCondition: {
       type: 'perfect_health_stage',
@@ -250,11 +234,7 @@ export const achievements = {
     description: 'Complete 3 stages without taking damage',
     icon: '🕊️',
     rarity: 'rare',
-    reward: {
-      coins: 100,
-      researchPoints: 50,
-      xp: 200
-    },
+    reward: 100,
     category: 'safety',
     unlockCondition: {
       type: 'stages_no_damage',
@@ -264,6 +244,22 @@ export const achievements = {
     celebrationMessage: "Incredible care! You embody the spirit of 'do no harm'!"
   },
 
+  guardian_angel: {
+    id: 'guardian_angel',
+    name: 'Guardian Angel',
+    description: 'Save a patient from critical vital signs',
+    icon: '👼',
+    rarity: 'epic',
+    reward: 120,
+    category: 'safety',
+    unlockCondition: {
+      type: 'critical_save',
+      value: true
+    },
+    hidden: false,
+    celebrationMessage: "HEROIC! You snatched victory from the jaws of defeat!"
+  },
+
   // Collection Achievements
   ship_collector: {
     id: 'ship_collector',
@@ -271,11 +267,7 @@ export const achievements = {
     description: 'Unlock 5 different ships',
     icon: '🚀',
     rarity: 'rare',
-    reward: {
-      coins: 100,
-      researchPoints: 50,
-      xp: 200
-    },
+    reward: 100,
     category: 'collection',
     unlockCondition: {
       type: 'ships_unlocked',
@@ -291,11 +283,7 @@ export const achievements = {
     description: 'Unlock all ships',
     icon: '👑',
     rarity: 'legendary',
-    reward: {
-      coins: 300,
-      researchPoints: 150,
-      xp: 750
-    },
+    reward: 300,
     category: 'collection',
     unlockCondition: {
       type: 'ships_unlocked',
@@ -305,6 +293,22 @@ export const achievements = {
     celebrationMessage: "LEGENDARY COLLECTION! You command the most advanced nano-fleet!"
   },
 
+  tool_master: {
+    id: 'tool_master',
+    name: 'Tool Master',
+    description: 'Unlock all medical tools',
+    icon: '🔧',
+    rarity: 'rare',
+    reward: 85,
+    category: 'collection',
+    unlockCondition: {
+      type: 'tools_unlocked',
+      value: 5
+    },
+    hidden: false,
+    celebrationMessage: "Complete surgical arsenal! You're equipped for any challenge!"
+  },
+
   // Progression Achievements
   life_saver: {
     id: 'life_saver',
@@ -312,11 +316,7 @@ export const achievements = {
     description: 'Save 10 patients successfully',
     icon: '🏆',
     rarity: 'uncommon',
-    reward: {
-      coins: 75,
-      researchPoints: 40,
-      xp: 175
-    },
+    reward: 75,
     category: 'progression',
     unlockCondition: {
       type: 'patients_saved',
@@ -332,11 +332,7 @@ export const achievements = {
     description: 'Save 50 patients successfully',
     icon: '✨',
     rarity: 'epic',
-    reward: {
-      coins: 200,
-      researchPoints: 100,
-      xp: 400
-    },
+    reward: 200,
     category: 'progression',
     unlockCondition: {
       type: 'patients_saved',
@@ -352,11 +348,7 @@ export const achievements = {
     description: 'Complete all story stages',
     icon: '🧠',
     rarity: 'epic',
-    reward: {
-      coins: 250,
-      researchPoints: 125,
-      xp: 500
-    },
+    reward: 250,
     category: 'progression',
     unlockCondition: {
       type: 'story_complete',
@@ -372,11 +364,7 @@ export const achievements = {
     description: 'Reach level 10',
     icon: '👑',
     rarity: 'legendary',
-    reward: {
-      coins: 500,
-      researchPoints: 250,
-      xp: 1000
-    },
+    reward: 500,
     category: 'progression',
     unlockCondition: {
       type: 'level_reached',
@@ -386,18 +374,14 @@ export const achievements = {
     celebrationMessage: "LEGENDARY STATUS! You are now among the greatest healers of all time!"
   },
 
-  // Hidden/Special Achievements
+  // Special/Hidden Achievements
   easter_egg_hunter: {
     id: 'easter_egg_hunter',
     name: 'Easter Egg Hunter',
     description: 'Find the hidden secret in the game',
     icon: '🥚',
     rarity: 'rare',
-    reward: {
-      coins: 150,
-      researchPoints: 75,
-      xp: 300
-    },
+    reward: 150,
     category: 'special',
     unlockCondition: {
       type: 'easter_egg_found',
@@ -413,11 +397,7 @@ export const achievements = {
     description: 'Play between midnight and 6 AM',
     icon: '🦉',
     rarity: 'uncommon',
-    reward: {
-      coins: 50,
-      researchPoints: 25,
-      xp: 100
-    },
+    reward: 50,
     category: 'special',
     unlockCondition: {
       type: 'night_play',
@@ -433,11 +413,7 @@ export const achievements = {
     description: 'Play for 7 consecutive days',
     icon: '🔥',
     rarity: 'rare',
-    reward: {
-      coins: 100,
-      researchPoints: 50,
-      xp: 200
-    },
+    reward: 100,
     category: 'special',
     unlockCondition: {
       type: 'daily_streak',
@@ -445,6 +421,38 @@ export const achievements = {
     },
     hidden: false,
     celebrationMessage: "Amazing dedication! Your commitment to healing knows no bounds!"
+  },
+
+  speedrun_champion: {
+    id: 'speedrun_champion',
+    name: 'Speedrun Champion',
+    description: 'Complete all stages in under 10 minutes total',
+    icon: '⏱️',
+    rarity: 'legendary',
+    reward: 400,
+    category: 'special',
+    unlockCondition: {
+      type: 'total_time',
+      value: 600
+    },
+    hidden: true,
+    celebrationMessage: "LIGHTNING SPEED! You've achieved the impossible time record!"
+  },
+
+  zen_master: {
+    id: 'zen_master',
+    name: 'Zen Master',
+    description: 'Complete a stage without using any power-ups',
+    icon: '🧘',
+    rarity: 'rare',
+    reward: 90,
+    category: 'special',
+    unlockCondition: {
+      type: 'no_powerups',
+      value: true
+    },
+    hidden: true,
+    celebrationMessage: "Inner peace achieved! True mastery comes from within!"
   }
 };
 
@@ -454,43 +462,50 @@ export const achievementCategories = {
     name: 'Learning',
     icon: '🎓',
     color: '#10b981',
-    description: 'Master the basics of nano-surgery'
+    description: 'Master the basics of nano-surgery',
+    totalAchievements: 3
   },
   skill: {
     name: 'Skill',
     icon: '⚡',
     color: '#f59e0b',
-    description: 'Demonstrate surgical precision and speed'
+    description: 'Demonstrate surgical precision and speed',
+    totalAchievements: 6
   },
   discovery: {
     name: 'Discovery',
     icon: '🔬',
     color: '#8b5cf6',
-    description: 'Explore and catalog medical phenomena'
+    description: 'Explore and catalog medical phenomena',
+    totalAchievements: 4
   },
   safety: {
     name: 'Safety',
     icon: '🛡️',
     color: '#06b6d4',
-    description: 'Prioritize patient safety and care'
+    description: 'Prioritize patient safety and care',
+    totalAchievements: 3
   },
   collection: {
     name: 'Collection',
     icon: '🚀',
     color: '#ef4444',
-    description: 'Build your medical equipment collection'
+    description: 'Build your medical equipment collection',
+    totalAchievements: 3
   },
   progression: {
     name: 'Progression',
     icon: '🏆',
     color: '#eab308',
-    description: 'Advance your medical career'
+    description: 'Advance your medical career',
+    totalAchievements: 4
   },
   special: {
     name: 'Special',
     icon: '✨',
     color: '#ec4899',
-    description: 'Unique and rare accomplishments'
+    description: 'Unique and rare accomplishments',
+    totalAchievements: 5
   }
 };
 
@@ -500,35 +515,40 @@ export const achievementRarity = {
     name: 'Common',
     color: '#9ca3af',
     probability: 0.7,
-    baseReward: 1.0
+    baseReward: 1.0,
+    description: 'Basic achievements for learning and progress'
   },
   uncommon: {
     name: 'Uncommon',
     color: '#10b981',
     probability: 0.5,
-    baseReward: 1.5
+    baseReward: 1.5,
+    description: 'Solid accomplishments showing skill development'
   },
   rare: {
     name: 'Rare',
     color: '#3b82f6',
     probability: 0.3,
-    baseReward: 2.0
+    baseReward: 2.0,
+    description: 'Impressive feats requiring dedication'
   },
   epic: {
     name: 'Epic',
     color: '#8b5cf6',
     probability: 0.15,
-    baseReward: 3.0
+    baseReward: 3.0,
+    description: 'Outstanding achievements of mastery'
   },
   legendary: {
     name: 'Legendary',
     color: '#f59e0b',
     probability: 0.05,
-    baseReward: 5.0
+    baseReward: 5.0,
+    description: 'The pinnacle of surgical excellence'
   }
 };
 
-// Achievement progress tracking
+// Achievement progress tracking utilities
 export const achievementProgress = {
   trackRepair: (count) => ({
     first_repair: Math.min(count, 1),
@@ -551,12 +571,68 @@ export const achievementProgress = {
   trackShipCollection: (unlockedCount) => ({
     ship_collector: Math.min(unlockedCount >= 5 ? 1 : 0, 1),
     fleet_admiral: Math.min(unlockedCount >= 8 ? 1 : 0, 1)
+  }),
+
+  trackLevel: (level) => ({
+    legendary_surgeon: Math.min(level >= 10 ? 1 : 0, 1)
+  }),
+
+  trackFacts: (factsLearned) => ({
+    medical_scholar: Math.min(factsLearned, 25)
   })
+};
+
+// Achievement notification system
+export const achievementNotifications = {
+  displayDuration: 5000, // 5 seconds
+  animationDuration: 1000, // 1 second
+  maxConcurrent: 3, // Maximum simultaneous notifications
+  
+  getNotificationStyle: (rarity) => {
+    const rarityData = achievementRarity[rarity];
+    return {
+      backgroundColor: `${rarityData.color}20`,
+      borderColor: rarityData.color,
+      glowColor: `${rarityData.color}40`
+    };
+  },
+  
+  getNotificationSound: (rarity) => {
+    const soundMap = {
+      common: 'achievement_common',
+      uncommon: 'achievement_uncommon', 
+      rare: 'achievement_rare',
+      epic: 'achievement_epic',
+      legendary: 'achievement_legendary'
+    };
+    return soundMap[rarity] || 'achievement_common';
+  }
+};
+
+// Achievement rewards and bonuses
+export const achievementRewards = {
+  calculateTotalReward: (achievement) => {
+    const rarityMultiplier = achievementRarity[achievement.rarity].baseReward;
+    return Math.floor(achievement.reward * rarityMultiplier);
+  },
+  
+  getBonusRewards: (achievementId) => {
+    const bonuses = {
+      fleet_admiral: { specialShip: '🌟', trailEffect: 'legendary' },
+      legendary_surgeon: { title: 'Legendary Surgeon', specialAccess: true },
+      virus_encyclopedia: { researchBonus: 100, knowledgeMultiplier: 2 },
+      brain_surgeon: { toolUpgrade: 'quantum', efficiencyBonus: 1.2 },
+      speedrun_champion: { speedBonus: 1.3, timeReduction: 0.9 }
+    };
+    return bonuses[achievementId] || {};
+  }
 };
 
 export default {
   achievements,
   achievementCategories,
   achievementRarity,
-  achievementProgress
+  achievementProgress,
+  achievementNotifications,
+  achievementRewards
 };

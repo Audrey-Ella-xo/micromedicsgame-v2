@@ -333,13 +333,42 @@ export const checkAchievementCondition = (condition, gameState) => {
       return gameState.lastStageHealth === 100;
     case 'stage_time':
       return gameState.lastStageTime <= condition.value;
+    case 'tutorial_no_damage':
+      return gameState.tutorialNoDamage === true;
+    case 'tutorial_time':
+      return gameState.tutorialTime <= condition.value;
+    case 'optimal_tool_streak':
+      return gameState.optimalToolStreak >= condition.value;
+    case 'stages_no_damage':
+      return gameState.stagesNoDamage >= condition.value;
+    case 'facts_learned':
+      return gameState.factsLearned >= condition.value;
+    case 'tools_unlocked':
+      return gameState.toolsUnlocked.length >= condition.value;
+    case 'daily_streak':
+      return gameState.consecutiveDays >= condition.value;
+    case 'night_play':
+      const hour = new Date().getHours();
+      return hour >= 0 && hour < 6;
+    case 'story_complete':
+      return gameState.storyComplete === true;
+    case 'critical_save':
+      return gameState.criticalSaves > 0;
+    case 'perfect_efficiency':
+      return gameState.lastStageEfficiency >= condition.value;
+    case 'easter_egg_found':
+      return gameState.easterEggsFound > 0;
+    case 'no_powerups':
+      return gameState.lastStageNoPowerUps === true;
+    case 'total_time':
+      return gameState.totalGameTime <= condition.value;
     default:
       return false;
   }
 };
 
 // Enhanced particle system utilities
-export const createParticle = (x, y, color, velocity = null, life = 60) => {
+export const createParticle = (x, y, color, velocity = null, life = 60, size = null) => {
   return {
     id: generateId('particle'),
     x,
@@ -349,8 +378,10 @@ export const createParticle = (x, y, color, velocity = null, life = 60) => {
     life,
     maxLife: life,
     color,
-    size: Math.random() * 4 + 2,
-    alpha: 1.0
+    size: size || Math.random() * 4 + 2,
+    alpha: 1.0,
+    rotation: Math.random() * 360,
+    rotationSpeed: (Math.random() - 0.5) * 10
   };
 };
 
@@ -363,12 +394,257 @@ export const updateParticles = (particles) => {
       life: particle.life - 1,
       vx: particle.vx * 0.98,
       vy: particle.vy * 0.98,
-      alpha: particle.life / particle.maxLife
+      alpha: particle.life / particle.maxLife,
+      rotation: particle.rotation + particle.rotationSpeed
     }))
     .filter(particle => particle.life > 0);
 };
 
-export default {
+// Enhanced visual feedback utilities
+export const createVisualFeedback = (x, y, text, color = '#10b981', type = 'standard') => {
+  const feedbackTypes = {
+    standard: { size: 16, duration: 120, movement: { x: 0, y: -1 } },
+    large: { size: 24, duration: 180, movement: { x: 0, y: -1.5 } },
+    combo: { size: 20, duration: 150, movement: { x: (Math.random() - 0.5) * 2, y: -2 } },
+    achievement: { size: 28, duration: 240, movement: { x: 0, y: -0.5 } }
+  };
+
+  const config = feedbackTypes[type] || feedbackTypes.standard;
+  
+  return {
+    id: generateId('feedback'),
+    x,
+    y,
+    text,
+    color,
+    size: config.size,
+    life: config.duration,
+    maxLife: config.duration,
+    vx: config.movement.x,
+    vy: config.movement.y,
+    alpha: 1.0
+  };
+};
+
+export const updateVisualFeedback = (feedback) => {
+  return feedback
+    .map(item => ({
+      ...item,
+      x: item.x + item.vx,
+      y: item.y + item.vy,
+      life: item.life - 1,
+      alpha: item.life / item.maxLife,
+      size: item.size * (1 + (item.maxLife - item.life) / item.maxLife * 0.2)
+    }))
+    .filter(item => item.life > 0);
+};
+
+// Enhanced combo system utilities
+export const calculateComboMultiplier = (comboCount) => {
+  if (comboCount < 3) return 1.0;
+  if (comboCount < 5) return 1.2;
+  if (comboCount < 8) return 1.5;
+  if (comboCount < 12) return 2.0;
+  return 2.5; // Max multiplier
+};
+
+export const getComboMessage = (comboCount) => {
+  const messages = {
+    3: 'Nice Combo!',
+    5: 'Great Combo!',
+    7: 'Amazing Combo!',
+    10: 'INCREDIBLE COMBO!',
+    15: 'LEGENDARY COMBO!'
+  };
+  
+  for (let count = 15; count >= 3; count--) {
+    if (comboCount >= count && messages[count]) {
+      return messages[count];
+    }
+  }
+  return 'Combo!';
+};
+
+// Enhanced tool optimization utilities
+export const getOptimalTool = (neuronType, virusType = null) => {
+  const neuronToolMap = {
+    motor: 'precision',
+    memory: 'stemcell',
+    neurotransmitter: 'stemcell',
+    executive: 'precision',
+    connection: 'ultrasonic',
+    vital: 'quantum',
+    cognitive: 'precision',
+    sensory: 'basic',
+    inhibitory: 'ultrasonic',
+    awareness: 'quantum'
+  };
+
+  const virusWeaknessMap = {
+    inflammation: 'precision',
+    toxin: 'basic',
+    necrosis: 'stemcell',
+    oxidative: 'ultrasonic',
+    prion: 'quantum',
+    autoimmune: 'stemcell',
+    genetic: 'quantum',
+    nanomachine: 'precision'
+  };
+
+  if (virusType && virusWeaknessMap[virusType]) {
+    return virusWeaknessMap[virusType];
+  }
+
+  return neuronToolMap[neuronType] || 'basic';
+};
+
+export const calculateToolEfficiency = (selectedTool, optimalTool) => {
+  if (selectedTool === optimalTool) return 1.0;
+  
+  const toolCompatibility = {
+    basic: { precision: 0.8, stemcell: 0.7, ultrasonic: 0.6, quantum: 0.5 },
+    precision: { basic: 0.8, stemcell: 0.6, ultrasonic: 0.7, quantum: 0.6 },
+    stemcell: { basic: 0.7, precision: 0.6, ultrasonic: 0.8, quantum: 0.7 },
+    ultrasonic: { basic: 0.6, precision: 0.7, stemcell: 0.8, quantum: 0.6 },
+    quantum: { basic: 0.5, precision: 0.6, stemcell: 0.7, ultrasonic: 0.6 }
+  };
+
+  return toolCompatibility[selectedTool]?.[optimalTool] || 0.5;
+};
+
+// Enhanced level progression utilities
+export const calculateXPNeeded = (level) => {
+  return 500 * level; // 500 XP per level
+};
+
+export const calculateLevel = (totalXP) => {
+  return Math.floor(totalXP / 500) + 1;
+};
+
+export const getPlayerTitle = (level, achievements = []) => {
+  if (achievements.includes('legendary_surgeon')) return 'Legendary Surgeon';
+  if (achievements.includes('brain_surgeon')) return 'Brain Surgeon';
+  if (achievements.includes('master_surgeon')) return 'Master Surgeon';
+  if (level >= 10) return 'Expert Surgeon';
+  if (level >= 7) return 'Senior Surgeon';
+  if (level >= 5) return 'Surgeon';
+  if (level >= 3) return 'Junior Surgeon';
+  return 'Medical Student';
+};
+
+// Enhanced difficulty scaling utilities
+export const getDifficultyMultiplier = (stage, playerLevel) => {
+  const baseDifficulty = {
+    1: 0.8,
+    2: 1.0,
+    3: 1.2,
+    4: 1.5,
+    5: 2.0
+  };
+
+  const levelAdjustment = Math.max(0.5, 1 - (playerLevel - stage) * 0.1);
+  return (baseDifficulty[stage] || 1.0) * levelAdjustment;
+};
+
+// Enhanced reward calculation utilities
+export const calculateStageRewards = (stage, performance, difficulty = 1.0) => {
+  const baseRewards = {
+    coins: 15 + (stage * 5),
+    xp: 100 + (stage * 25),
+    researchPoints: 20 + (stage * 10)
+  };
+
+  const performanceMultiplier = Math.max(0.5, performance / 100);
+  const difficultyMultiplier = difficulty;
+
+  return {
+    coins: Math.round(baseRewards.coins * performanceMultiplier * difficultyMultiplier),
+    xp: Math.round(baseRewards.xp * performanceMultiplier * difficultyMultiplier),
+    researchPoints: Math.round(baseRewards.researchPoints * performanceMultiplier * difficultyMultiplier)
+  };
+};
+
+// Enhanced daily challenge utilities
+export const generateDailyChallenge = (date = new Date()) => {
+  const challenges = [
+    'steady_surgeon',
+    'perfect_precision',
+    'virus_hunter',
+    'gentle_healer',
+    'speed_surgeon',
+    'combo_master',
+    'knowledge_seeker'
+  ];
+
+  // Use date as seed for consistent daily challenges
+  const seed = date.getFullYear() * 10000 + date.getMonth() * 100 + date.getDate();
+  const challengeIndex = seed % challenges.length;
+  
+  return challenges[challengeIndex];
+};
+
+export const checkDailyChallengeProgress = (challengeType, gameState, actionData) => {
+  switch (challengeType) {
+    case 'steady_surgeon':
+      return actionData.stageTime >= 120 ? 1 : 0;
+    case 'perfect_precision':
+      return actionData.optimalToolUse ? gameState.perfectPrecisionCount + 1 : gameState.perfectPrecisionCount;
+    case 'virus_hunter':
+      return actionData.virusEliminatedWithWeakness ? gameState.virusHunterCount + 1 : gameState.virusHunterCount;
+    case 'gentle_healer':
+      return actionData.stageCompletedNoDamage ? 1 : 0;
+    case 'speed_surgeon':
+      return actionData.stageTime <= 120 ? 1 : 0;
+    case 'combo_master':
+      return actionData.comboAchieved >= 5 ? 1 : 0;
+    case 'knowledge_seeker':
+      return actionData.factLearned ? gameState.knowledgeSeekerCount + 1 : gameState.knowledgeSeekerCount;
+    default:
+      return 0;
+  }
+};
+
+// Enhanced game state utilities
+export const createInitialGameState = () => {
+  return {
+    version: '2.0.0',
+    level: 1,
+    xp: 0,
+    coins: 0,
+    researchPoints: 0,
+    knowledgePoints: 0,
+    consecutiveDays: 0,
+    totalRepairs: 0,
+    totalPatientsHealed: 0,
+    totalVirusesEliminated: 0,
+    maxCombo: 0,
+    earnedAchievements: new Set(),
+    unlockedShips: ['🚀'],
+    currentShip: '🚀',
+    unlockedTools: ['basic'],
+    virusCollection: new Set(),
+    factsLearned: 0,
+    stagesCompleted: [],
+    perfectStages: 0,
+    lastStageHealth: 100,
+    lastStageTime: 0,
+    lastStageEfficiency: 0,
+    tutorialCompleted: false,
+    tutorialNoDamage: false,
+    tutorialTime: 0,
+    optimalToolStreak: 0,
+    stagesNoDamage: 0,
+    criticalSaves: 0,
+    storyComplete: false,
+    easterEggsFound: 0,
+    totalGameTime: 0,
+    lastPlayDate: null,
+    dailyChallengeProgress: {},
+    missionProgress: []
+  };
+};
+
+export const enhancedGameUtils = {
   triggerHaptic,
   calculateDistance,
   calculateDistanceSquared,
@@ -405,5 +681,21 @@ export default {
   debugLog,
   checkAchievementCondition,
   createParticle,
-  updateParticles
+  updateParticles,
+  createVisualFeedback,
+  updateVisualFeedback,
+  calculateComboMultiplier,
+  getComboMessage,
+  getOptimalTool,
+  calculateToolEfficiency,
+  calculateXPNeeded,
+  calculateLevel,
+  getPlayerTitle,
+  getDifficultyMultiplier,
+  calculateStageRewards,
+  generateDailyChallenge,
+  checkDailyChallengeProgress,
+  createInitialGameState
 };
+
+export default enhancedGameUtils;
