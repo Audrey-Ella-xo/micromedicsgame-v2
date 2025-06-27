@@ -1,0 +1,488 @@
+/* Enhanced Micro Medics v2.0 Global Styles */
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #312e81 100%);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Enhanced Animation Keyframes */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(96, 165, 250, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(96, 165, 250, 0.8);
+  }
+}
+
+@keyframes float-up {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+}
+
+@keyframes particle-fade {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+
+@keyframes achievement-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes ship-trail {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+@keyframes heart-beat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes neural-spark {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes celebration-confetti {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Enhanced Utility Classes */
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.float-up {
+  animation: float-up 2s ease-out forwards;
+}
+
+.particle-fade {
+  animation: particle-fade 1s ease-out forwards;
+}
+
+.achievement-bounce {
+  animation: achievement-bounce 1s ease-out;
+}
+
+.ship-trail {
+  animation: ship-trail 0.5s ease-out forwards;
+}
+
+.heart-beat {
+  animation: heart-beat 1.5s ease-in-out infinite;
+}
+
+.neural-spark {
+  animation: neural-spark 1s ease-in-out infinite;
+}
+
+.celebration-confetti {
+  animation: celebration-confetti 3s ease-out forwards;
+}
+
+/* Enhanced Gradient Backgrounds */
+.medical-gradient {
+  background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+}
+
+.achievement-gradient {
+  background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+}
+
+.ship-gradient {
+  background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+}
+
+.patient-gradient {
+  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+}
+
+/* Enhanced Interactive Elements */
+.enhanced-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+}
+
+.enhanced-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.enhanced-button:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced Card Styles */
+.enhanced-card {
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.enhanced-card:hover {
+  background: rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Enhanced Progress Bars */
+.enhanced-progress {
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.enhanced-progress::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .enhanced-button {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+  
+  .enhanced-card {
+    margin: 8px;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+  
+  .enhanced-button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  .enhanced-card {
+    margin: 4px;
+    padding: 12px;
+  }
+}
+
+/* Enhanced Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .enhanced-card {
+    background: rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* Enhanced Focus Styles */
+button:focus,
+.enhanced-button:focus {
+  outline: 2px solid #06b6d4;
+  outline-offset: 2px;
+}
+
+/* Enhanced Loading States */
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Enhanced Scroll Styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(96, 165, 250, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(96, 165, 250, 0.7);
+}
+
+/* Enhanced Typography */
+.title-enhanced {
+  font-weight: 700;
+  background: linear-gradient(135deg, #06b6d4, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle-enhanced {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.body-enhanced {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+/* Enhanced Game-Specific Styles */
+.game-area-enhanced {
+  position: relative;
+  background: rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(6, 182, 212, 0.4);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.neuron-enhanced {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.neuron-enhanced:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+.virus-enhanced {
+  transition: all 0.2s ease;
+}
+
+.virus-enhanced.hunting {
+  animation: pulse-glow 0.5s ease-in-out infinite;
+}
+
+.ship-enhanced {
+  transition: all 0.2s ease;
+  filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5));
+}
+
+.ship-enhanced.moving {
+  animation: heart-beat 0.5s ease-in-out;
+}
+
+.achievement-notification {
+  animation: achievement-bounce 1s ease-out;
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+}
+
+/* Enhanced Game Effects */
+.particle-system {
+  pointer-events: none;
+  position: absolute;
+  z-index: 100;
+}
+
+.visual-feedback {
+  pointer-events: none;
+  font-weight: bold;
+  text-shadow: 0 0 10px currentColor;
+  animation: float-up 2s ease-out forwards;
+}
+
+.ship-trail-point {
+  border-radius: 50%;
+  animation: ship-trail 1s ease-out forwards;
+}
+
+/* Enhanced Medical UI */
+.vitals-monitor {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+}
+
+.vitals-value {
+  font-weight: bold;
+  text-shadow: 0 0 5px currentColor;
+}
+
+.vitals-critical {
+  animation: pulse-glow 1s ease-in-out infinite;
+  color: #ef4444;
+}
+
+.vitals-normal {
+  color: #10b981;
+}
+
+.vitals-warning {
+  color: #f59e0b;
+}
+
+/* Enhanced Achievement Styles */
+.achievement-icon {
+  font-size: 2rem;
+  animation: heart-beat 2s ease-in-out infinite;
+}
+
+.achievement-rare {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+}
+
+.achievement-epic {
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+}
+
+.achievement-legendary {
+  background: linear-gradient(135deg, #f59e0b, #ef4444);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Enhanced Ship Selector */
+.ship-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.ship-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.ship-card.selected {
+  border-color: #f59e0b;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+}
+
+.ship-trail-preview {
+  height: 3px;
+  border-radius: 2px;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Print Styles */
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .enhanced-card {
+    background: white;
+    border: 1px solid #ccc;
+  }
+  
+  .enhanced-button {
+    background: #ccc;
+    color: black;
+  }
+}
